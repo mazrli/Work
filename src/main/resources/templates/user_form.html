@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageType}]] user</title>
+</head>
+<body>
+
+    <form th:action="@{/users/save}" method="post" th:object="${user}">
+        <input type="hidden" th:field="*{Id}" />
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}" required minlength="2" maxlength="45"/>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="number" th:field="*{password}"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{gender}"/>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+            <button type="submit" onclick="cancelForm()">Cancel</button>
+        </div>
+        <script type="text/javascript">
+            function cancelForm() {
+                window.location = "[[@{/users}]]";
+            }
+        </script>
+    </form>
+</body>
+</html>
